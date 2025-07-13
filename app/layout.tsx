@@ -3,10 +3,8 @@
 import { AbstraxionProvider } from "@burnt-labs/abstraxion";
 import "@burnt-labs/abstraxion/dist/index.css";
 import "@burnt-labs/ui/dist/index.css";
-import { Inter } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
 
 const config = {
   treasury: process.env.NEX_PUBLIC_TREASURY!,
@@ -21,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body >
         <AbstraxionProvider config={config}>
           {children}
         </AbstraxionProvider>

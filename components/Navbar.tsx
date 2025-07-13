@@ -3,6 +3,7 @@
 import { Button } from "@burnt-labs/ui";
 import { useEffect, useState } from "react";
 import { useVoting } from "@/hooks/useVoting";
+import Link from "next/link";
 
 export const Navbar = () => {
     const { account, votings, loading, logout } = useVoting();
@@ -34,8 +35,10 @@ export const Navbar = () => {
             <div className="flex justify-between items-center mb-8">
                 <div className="flex-1">
                     <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-                        <a href="/">Votings</a>
-                    </h1>
+
+                        <Link href="/" className="text-black hover:underline">
+                            Votings
+                        </Link>                    </h1>
                 </div>
 
                 <div className="hidden md:flex items-center gap-4">

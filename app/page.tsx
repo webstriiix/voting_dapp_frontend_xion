@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@burnt-labs/ui";
 import { WalletConnect } from "../components/WalletConnect";
 import { useVoting } from "../hooks/useVoting";
 import { CreateVotingModal } from "../components/CreateVotingModal";

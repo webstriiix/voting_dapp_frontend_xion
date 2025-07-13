@@ -8,6 +8,7 @@ import { Button } from "@burnt-labs/ui";
 import { Navbar } from "../../../components/Navbar";
 import { Candidate } from "@/types/voting";
 import { UpdateCandidateModal } from "@/components/UpdateCandidateModal";
+import Image from "next/image";
 
 
 export default function VotingDetailPage() {
@@ -79,11 +80,11 @@ export default function VotingDetailPage() {
                         <div className="text-center py-12">
                             <div className="text-gray-400 text-6xl mb-4">📋</div>
                             <p className="text-gray-500 text-lg mb-2">No candidates yet</p>
-                            <p className="text-gray-400">Click "Create Candidate" to add the first candidate</p>
+                            <p className="text-gray-400">Click Create Candidate to add the first candidate</p>
                         </div>
                     ) : (
                         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                            {candidates.map((c, index) => (
+                            {candidates.map((c) => (
                                 <div
                                     key={c.id}
                                     className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
@@ -92,7 +93,7 @@ export default function VotingDetailPage() {
                                     <div className="flex justify-center mb-4">
                                         <div className="relative">
                                             {c.image_addr ? (
-                                                <img
+                                                <Image
                                                     src={c.image_addr}
                                                     alt={c.name}
                                                     className="w-50 max-h-50 object-contain rounded-2xl border-4 border-gray-100 group-hover:border-black transition-colors duration-300"
