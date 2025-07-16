@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useVotingDetail } from "../../../hooks/useVotingDetail";
 import { CreateCandidateModal } from "../../../components/CreateCandidateModal";
@@ -8,7 +8,7 @@ import { Button } from "@burnt-labs/ui";
 import { Navbar } from "../../../components/Navbar";
 import { Candidate } from "@/types/voting";
 import { UpdateCandidateModal } from "@/components/UpdateCandidateModal";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 
 export default function VotingDetailPage() {
@@ -18,6 +18,22 @@ export default function VotingDetailPage() {
     const [openUpdate, setOpenUpdate] = useState(false);
     const [selectedCandidate, setSelectedCandidate] = useState<Candidate | null>(null);
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
+
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!account?.bech32Address) {
+            router.push("/"); // or "/login" if you have one
+        }
+    }, [account?.bech32Address, router]);
+
+    if (!account?.bech32Address) {
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <p className="text-gray-500 text-lg">Redirecting...</p>
+            </div>
+        );
+    }
 
 
     if (loading || !voting) {
@@ -93,7 +109,8 @@ export default function VotingDetailPage() {
                                     <div className="flex justify-center mb-4">
                                         <div className="relative">
                                             {c.image_addr ? (
-                                                <Image
+                                                // eslint-disable-next-line @next/next/no-img-element
+                                                <img
                                                     src={c.image_addr}
                                                     alt={c.name}
                                                     className="w-50 max-h-50 object-contain rounded-2xl border-4 border-gray-100 group-hover:border-black transition-colors duration-300"

@@ -7,10 +7,12 @@ import './globals.css';
 
 
 const config = {
-  treasury: process.env.NEX_PUBLIC_TREASURY!,
+  treasury: process.env.NEXT_PUBLIC_TREASURY!,
   rpcUrl: "https://rpc.xion-testnet-2.burnt.com/",
   restUrl: "https://api.xion-testnet-2.burnt.com/"
 };
+
+console.log("treasury" + config.treasury)
 
 export default function RootLayout({
   children,

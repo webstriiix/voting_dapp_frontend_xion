@@ -1,7 +1,6 @@
 // components/CreateCandidateModal.tsx
 import React, { useState } from "react";
 import { Button, Dialog, DialogContent, Input } from "@burnt-labs/ui";
-import Image from "next/image";
 
 export const CreateCandidateModal = ({
     isOpen,
@@ -71,15 +70,14 @@ export const CreateCandidateModal = ({
 
                         {/* Image Preview */}
                         {image && !imageError && (
+                                    // eslint-disable-next-line @next/next/no-img-element
                             <div className="mt-4">
                                 <label className="block text-sm font-medium mb-2">Preview</label>
                                 <div className="flex justify-center">
-                                    <Image
+                                    <img
                                         src={image}
                                         alt="Candidate preview"
-                                        width={80}
-                                        height={80}
-                                        className="rounded-lg border border-gray-200 object-cover"
+                                        className="max-w-80 max-h-80 rounded-lg border border-gray-200 object-cover"
                                     />
                                 </div>
                             </div>
